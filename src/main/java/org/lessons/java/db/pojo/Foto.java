@@ -1,5 +1,8 @@
 package org.lessons.java.db.pojo;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
@@ -8,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -32,13 +36,16 @@ public class Foto {
 	
 	private boolean visibile;
 	
+	@ManyToMany
+	private List<Categoria> categorie;
 	
 	public Foto() {}
-	public Foto(String titolo, String descrizione, String url, boolean visibile) {
+	public Foto(String titolo, String descrizione, String url, boolean visibile, Categoria...categorie) {
 		setTitolo(titolo);
 		setDescrizione(descrizione);
 		setUrl(url);
 		setVisibile(visibile);
+		setCategorie(categorie);
 	}
 	
 	public int getId() {
@@ -72,6 +79,16 @@ public class Foto {
 		this.visibile = visibile;
 	}
 	
+	public List<Categoria> getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(List<Categoria> categorie) {
+		this.categorie = categorie;
+	}
+	
+	public void setCategorie(Categoria... categorie) {
+		setCategorie(Arrays.asList(categorie));
+	}
 	@Override
 	public String toString() {
 		return "[" + getId() + "] " + getTitolo() + " - " 
