@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<title>Categoria form:</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
 </head>
-<body>
-
+<body class="bg-secondary-subtle">
+	<h1 class="text-center mt-2 mb-5 text-white">Nuovo categoria:</h1>
+	<div class="container">
+		<div class="row g-0 d-flex justify-content-center">
+			<div class="col-12 col-md-4 col-md-3">
+				<div class="bg-primary p-5 rounded-3">
+					<form
+						th:object="${categoria}"
+						method="POST"
+					>
+						
+					  <div class="mb-3">
+					    <label for="nome" class="form-label text-white">Categoria</label>
+					    <input type="text" class="form-control mb-2" id="nome" th:field="*{nome}">
+					  </div>
+					  
+					  <button type="submit" class="btn btn-success" value="STORE">Crea categoria</button>
+					</form>					
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
