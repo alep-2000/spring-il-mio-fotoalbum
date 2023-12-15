@@ -6,24 +6,27 @@
 	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
 </head>
 <body
-	th:object="${foto}"
 	class="bg-secondary-subtle"
 >
-	<h1 class="text-center mt-2 mb-5 text-white" th:text="|[*{id}] Foto:|"></h1>
-	<div class="container">
-		<div class="d-flex">
-			<div class="me-2" th:insert="frags :: button('/', 'Fotos')"></div>						
-		</div>
-		<div class="row justify-content-center align-items-center g-0">
-			<div class="card m-3 d-flex col-12 col-md-4 col-md-3 text-center" style="width: 18rem;">
-			  <img th:src="*{url}" class="card-img-top" alt="..." style="height: 14rem; max-width: 18rem;">
-			  <div class="card-body">
-				<h5 class="card-title">[[*{titolo}]]</h5>								
-			    <p class="card-text">[[*{descrizione}]]</p>
-			  </div>
-			  <p>[[*{visibile ? "Si" : "No"}]]</p>
+	<div
+		th:object="${foto}"
+	>
+		<h1 class="text-center mt-2 mb-5 text-white" th:text="|[*{id}] Foto:|"></h1>
+			<div class="container">
+				<div class="d-flex">
+					<div class="me-2" th:insert="frags :: button('/', 'Fotos')"></div>						
+				</div>
+				<div class="row justify-content-center align-items-center g-0">
+					<div class="card m-3 d-flex col-12 col-md-4 col-md-3 text-center" style="width: 18rem;">
+					  <img th:src="*{url}" class="card-img-top" alt="..." style="height: 14rem; max-width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">[[*{titolo}]]</h5>								
+					    <p class="card-text">[[*{descrizione}]]</p>
+					  </div>
+					  <p>[[*{visibile ? "Si" : "No"}]]</p>
+				</div>
 			</div>
 		</div>
-	</div>
+	</div> 	
 </body>
 </html>

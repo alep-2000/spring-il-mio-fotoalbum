@@ -50,8 +50,16 @@
 						>
 					    	<h5 class="card-title badge text-bg-primary">[[*{titolo}]]</h5>								
 						</a>
+						<div class="d-flex justify-content-center mb-3">				
+							<a th:href="@{/fotos/edit/{id} (id=*{id})}">
+								<button class="btn btn-primary">
+									Modifica la foto
+								</button>									
+							</a>								
+						</div>
 					</div>
 				</div>
+	
 			</div>
 		</div>
 	</div>

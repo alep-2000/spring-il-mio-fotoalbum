@@ -72,6 +72,25 @@ public class FotoController {
 		return saveFoto(model, foto, bindingResult);
 	}
 	
+	@GetMapping("/fotos/edit/{id}")
+	public String editFoto(Model model,
+			@PathVariable int id) {
+		
+		List<Categoria> categorie = categoriaService.findAll();
+		Foto foto = fotoService.findById(id);
+		model.addAttribute("foto", foto);
+		model.addAttribute("categorie", categorie);
+		
+		return "foto-form";
+	}
+	@PostMapping("/fotos/edit/{id}")
+	public String updateFoto(Model model,
+			@Valid @ModelAttribute Foto foto, 
+			BindingResult bindingResult) {
+		
+		return saveFoto(model, foto, bindingResult);
+	}
+	
 	private String saveFoto(Model model,
 			@Valid @ModelAttribute Foto foto,
 			BindingResult bindingResult) {

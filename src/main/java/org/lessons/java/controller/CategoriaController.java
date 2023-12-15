@@ -3,6 +3,7 @@ package org.lessons.java.controller;
 import java.util.List;
 
 import org.lessons.java.db.pojo.Categoria;
+import org.lessons.java.db.pojo.Foto;
 import org.lessons.java.db.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
