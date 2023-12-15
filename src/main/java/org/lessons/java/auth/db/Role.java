@@ -14,12 +14,12 @@ public class Role {
 	private int id;
 	
 	@Column(nullable = false)
-	private String name;
+	private String nome;
 	
 	public Role() { }
-	public Role(String name) {
+	public Role(String nome) {
 		
-		setName(name);
+		setNome(nome);
 	}
 	
 	public int getId() {
@@ -28,16 +28,16 @@ public class Role {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	@Override
 	public String toString() {
 		
-		return "[" + getId() + "] " + getName();
+		return "[" + getId() + "] " + getNome();
 	}
 }

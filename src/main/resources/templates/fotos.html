@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<title>Best Fotos</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
 </head>
-<body>
-
+<body class="bg-secondary-subtle">
+	<div class="container">
+		<div class="row mb-3">
+			<div class="col-12">
+				<h1 class="text-center mt-2 mb-5 text-white">Fotos:</h1>
+			</div>
+		</div>
+		<div class="row g-0">
+			<div 	
+				th:each="foto : ${fotos}"
+				th:object="${foto}"
+				class="card m-3 d-flex col-12 col-md-4 col-lg-3" style="width: 18rem;">
+			  <img th:src="*{url}" class="card-img-top" alt="..." style="height: 14rem; max-width: 18rem;">
+			  <div class="card-body text-center">
+			  	<h1>[[*{titolo}]]</h1>
+			    <p class="card-text">[[*{descrizione}]]</p>
+			  </div>
+			  	<p class="text-center">[[*{visibile ? "Si" : "No"}]]</p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

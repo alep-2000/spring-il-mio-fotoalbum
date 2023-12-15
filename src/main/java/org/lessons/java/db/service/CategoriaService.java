@@ -2,7 +2,7 @@ package org.lessons.java.db.service;
 
 import java.util.List;
 
-import org.lessons.java.controller.Categoria;
+import org.lessons.java.db.pojo.Categoria;
 import org.lessons.java.db.repo.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
