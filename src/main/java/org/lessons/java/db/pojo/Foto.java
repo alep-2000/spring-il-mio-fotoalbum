@@ -1,5 +1,6 @@
 package org.lessons.java.db.pojo;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import jakarta.persistence.Column;
@@ -7,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Foto {
@@ -16,25 +18,27 @@ public class Foto {
 	private int id;
 	
 	@Column(length = 60)
+	@Length(min=3, max=60, message = "Il titolo deve essere compreso tra 3 e 60 caratteri")
+	@NotBlank(message = "Il titolo non può essere nullo")
 	private String titolo;
 	
 	@Column(columnDefinition = "TEXT")
+	@Length(min = 3, message = "La descrizione non può essere nulla")
 	private String descrizione;
 	
 	@URL(protocol = "https")
+	@NotBlank(message = "Url non può essere nullo")
 	private String url;
 	
 	private boolean visibile;
 	
-	private String categorie;
 	
 	public Foto() {}
-	public Foto(String titolo, String descrizione, String url, boolean visibile, String categorie) {
+	public Foto(String titolo, String descrizione, String url, boolean visibile) {
 		setTitolo(titolo);
 		setDescrizione(descrizione);
 		setUrl(url);
 		setVisibile(visibile);
-		setCategorie(categorie);
 	}
 	
 	public int getId() {
@@ -67,17 +71,11 @@ public class Foto {
 	public void setVisibile(boolean visibile) {
 		this.visibile = visibile;
 	}
-	public String getCategorie() {
-		return categorie;
-	}
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
-	}
 	
 	@Override
 	public String toString() {
 		return "[" + getId() + "] " + getTitolo() + " - " 
 				+ getDescrizione() + " - " + getUrl() + " - "
-				+ isVisibile() + " - " + getCategorie();
+				+ isVisibile();
 	}
 }
