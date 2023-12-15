@@ -12,6 +12,20 @@
 				<h1 class="text-center mt-2 mb-5 text-white">Fotos:</h1>
 			</div>
 		</div>
+		<div class="row d-flex justify-content-center mb-5">
+			<div class="col-12 col-md-6">
+				<div class="bg-primary p-5 rounded-3">
+					<form class="d-flex">
+					  <div class="mb-3 me-3">
+					    <input type="text" class="form-control" id="search" name="f" th:value="${f}">
+					  </div>
+					  <div>
+					  	<button type="submit" class="btn btn-warning text-white" value="SEARCH">Cerca foto</button>
+					  </div>
+					</form>											
+				</div>
+			</div>
+		</div>
 		<div class="row g-0">
 			<div 	
 				th:each="foto : ${fotos}"
