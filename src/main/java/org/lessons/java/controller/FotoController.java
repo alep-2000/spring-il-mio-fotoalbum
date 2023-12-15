@@ -4,6 +4,7 @@ package org.lessons.java.controller;
 
 import java.util.List;
 
+import org.lessons.java.db.pojo.Categoria;
 import org.lessons.java.db.pojo.Foto;
 import org.lessons.java.db.service.CategoriaService;
 import org.lessons.java.db.service.FotoService;
@@ -14,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
@@ -49,18 +51,40 @@ public class FotoController {
 		return "foto";
 	}
 	
+	@GetMapping("/fotos/create")
+	public String createFoto(Model model) {
+		
+		Foto foto = new Foto();
+		
+		List<Categoria> categorie = categoriaService.findAll();
+		model.addAttribute("foto", foto);
+		model.addAttribute("categorie", categorie);
+		
+		return "foto-form";
+	}
+	
+	@PostMapping("/fotos/create")
+	public String storeFoto(
+			Model model,
+			@Valid @ModelAttribute Foto foto, 
+			BindingResult bindingResult) {
+			
+		return saveFoto(model, foto, bindingResult);
+	}
+	
 	private String saveFoto(Model model,
-			@Valid @ModelAttribute Foto foto) {
+			@Valid @ModelAttribute Foto foto,
+			BindingResult bindingResult) {
 		
 		System.out.println("Pizza:\n" + foto);
 		System.out.println("\n---------------\n");
-//		System.out.println("Error:\n" + bindingResult);
+		System.out.println("Error:\n" + bindingResult);
 		
-//		if (bindingResult.hasErrors()) {
-//			
-//			model.addAttribute("pizza", pizza);
-//			return "pizza-form";
-//		}
+		if (bindingResult.hasErrors()) {
+			
+			model.addAttribute("foto", foto);
+			return "foto-form";
+		}
 		
 		fotoService.save(foto);
 	

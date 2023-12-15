@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<title>Pizza form:</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
 </head>
-<body>
-
+<body class="bg-secondary-subtle">
+	<h1 class="text-center mt-2 mb-5 text-white">Nuova Foto:</h1>
+	<div class="container">
+		<div class="row g-0 d-flex justify-content-center">
+			<div class="col-12 col-md-4 col-md-3">
+				<div class="bg-primary p-5 rounded-3">
+					<form
+						th:object="${foto}"
+						method="POST"
+					>
+						 
+					  <div class="mb-3">
+					    <label for="titolo" class="form-label text-white">Titolo</label>
+					    <input type="text" class="form-control mb-2" id="titolo" th:field="*{titolo}">
+					    <div id="titolo" class="form-text" th:replace="frags::errorDiv('titolo')"></div>
+					  </div>
+					  <div class="mb-3">
+					    <label for="descrizione" class="form-label text-white">Descrizione</label>
+					    <input type="text" class="form-control mb-2" id="descrizione" th:field="*{descrizione}">
+					    <div id="descrizione" class="form-text" th:replace="frags::errorDiv('descrizione')"></div>
+					  </div>
+					  <div class="mb-3">
+					    <label for="url" class="form-label text-white">Foto</label>
+					    <input type="text" class="form-control mb-2" id="url" th:field="*{url}">
+					    <div id="url" class="form-text" th:replace="frags::errorDiv('url')"></div>
+					  </div>
+					  <div class="mb-3">
+					    <label for="visibile" class="form-label text-white">Visibile</label>
+					    <input type="text" class="form-control mb-2" id="visibile" step="any" th:field="*{visibile}">
+					    <div id="visibile" class="form-text" th:replace="frags::errorDiv('visibile')"></div>
+					  </div>
+					  <button type="submit" class="btn btn-success" value="STORE">Crea foto</button>
+					</form>					
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

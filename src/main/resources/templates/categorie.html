@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<title>Best categorie</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
 </head>
-<body>
-
+<body class="bg-secondary-subtle">
+	<div class="container">
+		<div class="row mb-3">
+			<div class="col-12">
+				<h1 class="text-center mt-2 mb-5 text-white">Categorie:</h1>
+			</div>
+			<div class="me-2" th:insert="frags :: button('/', 'Pizzas')"></div>
+		</div>
+		<div class="row g-0">
+			<div 	
+				th:each="categoria : ${categorie}"
+				th:object="${categoria}"
+				class="col-12 d-flex justify-content-center"
+			>
+			    <ul class="list-unstyled text-white">
+			    	<li>
+				    	[[*{nome}]]
+			    	</li>
+			    </ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

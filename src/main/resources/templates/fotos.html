@@ -24,23 +24,34 @@
 					  	<button type="submit" class="btn btn-warning text-white" value="SEARCH">Cerca foto</button>
 					  </div>
 					</form>											
+					<div>
+						<a href="/fotos/categorie">
+							<button class="btn btn-success mb-3 me-2">
+								Lista Categorie
+							</button>									
+						</a>	
+						<a href="/fotos/create">
+							<button class="btn btn-success mb-3 me-2">
+								Crea Nuova Foto
+							</button>									
+						</a>																					
+					</div>
 				</div>
 			</div>
-		</div>
-		
-		<div class="row g-0">
-			<div 	
-				th:each="foto : ${fotos}"
-				th:object="${foto}"
-				class="card m-3 col-12 col-md-4 col-lg-3" style="width: 18rem;">
-				<img th:src="*{url}" class="card-img-top" alt="..." style="height: 14rem; max-width: 18rem;">
-				<div class="card-body text-center">
-				  	<a
-						th:href="@{/fotos/{id}(id=*{id})}"
-					>
-				    	<h5 class="card-title badge text-bg-primary">[[*{titolo}]]</h5>								
-					</a>
-				 </div>
+			<div class="row g-0">
+				<div 	
+					th:each="foto : ${fotos}"
+					th:object="${foto}"
+					class="card m-3 col-12 col-md-4 col-lg-3" style="width: 18rem;">
+					<img th:src="*{url}" class="card-img-top" alt="..." style="height: 14rem; max-width: 18rem;">
+					<div class="card-body text-center">
+					  	<a
+							th:href="@{/fotos/{id}(id=*{id})}"
+						>
+					    	<h5 class="card-title badge text-bg-primary">[[*{titolo}]]</h5>								
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

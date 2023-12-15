@@ -19,7 +19,7 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaService categoriaService;
 	
-	@GetMapping("foto/categorie")
+	@GetMapping("fotos/categorie")
 	public String getCategorie(Model model) {
 		
 		List<Categoria> index = categoriaService.findAll();

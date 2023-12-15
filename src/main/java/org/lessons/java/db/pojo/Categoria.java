@@ -21,7 +21,7 @@ public class Categoria {
 	
 	public Categoria(){}
 	public Categoria(String nome){
-		
+		setNome(nome);
 	}
 	public int getId() {
 		return id;
