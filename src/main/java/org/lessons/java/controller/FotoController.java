@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
@@ -36,6 +37,16 @@ public class FotoController {
 		model.addAttribute("f", f == null ? "" : f);
 		
 		return "fotos";
+	}
+	
+	@GetMapping("/fotos/{id}")
+	public String getFoto(Model model,
+			@PathVariable int id) {
+		
+		Foto foto = fotoService.findById(id);
+		model.addAttribute("foto", foto);
+		
+		return "foto";
 	}
 	
 	private String saveFoto(Model model,
