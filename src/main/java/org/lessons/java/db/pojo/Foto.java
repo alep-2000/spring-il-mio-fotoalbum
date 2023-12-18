@@ -34,6 +34,7 @@ public class Foto {
 	@NotBlank(message = "Url non può essere nullo")
 	private String url;
 	
+	@Column(nullable=false)
 	private boolean visibile;
 	
 	@ManyToMany

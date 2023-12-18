@@ -3,7 +3,6 @@ package org.lessons.java.controller;
 import java.util.List;
 
 import org.lessons.java.db.pojo.Categoria;
-import org.lessons.java.db.pojo.Foto;
 import org.lessons.java.db.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 
@@ -60,6 +58,15 @@ public class CategoriaController {
 			
 		
 		return saveCategoria(model, categoria, bindingResult);
+	}
+	
+	@PostMapping("/fotos/categorie/delete/{id}")
+	public String deleteCategoria(@PathVariable int id) {
+		
+		Categoria categoria = categoriaService.findById(id);
+		categoriaService.delete(categoria);
+		
+		return "redirect:/";
 	}
 	
 	private String saveCategoria(Model model,

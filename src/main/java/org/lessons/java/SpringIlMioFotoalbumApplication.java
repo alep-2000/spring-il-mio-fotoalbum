@@ -35,7 +35,7 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 	}
 
 	@Override
-	public void run(String[] args) throws Exception{
+	public void run(String... args) throws Exception{
 		
 		Categoria cat1 = new Categoria("Naturalistica");
 		Categoria cat2 = new Categoria("Reportage");

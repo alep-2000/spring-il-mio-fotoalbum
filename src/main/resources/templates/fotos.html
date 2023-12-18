@@ -57,9 +57,18 @@
 								</button>									
 							</a>								
 						</div>
+						<form 
+							style="display:inline-block"
+							th:action="@{/fotos/delete/{id} (id=*{id})}"
+							method="POST">
+							<div class="d-flex justify-content-center mb-3">
+								<button type="submit" class="btn btn-danger" value="DELETE">
+									Elimina la Foto
+								</button>
+							</div>	
+						</form>
 					</div>
 				</div>
-	
 			</div>
 		</div>
 	</div>

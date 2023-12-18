@@ -91,11 +91,20 @@ public class FotoController {
 		return saveFoto(model, foto, bindingResult);
 	}
 	
+	@PostMapping("/fotos/delete/{id}")
+	public String deleteFoto(@PathVariable int id) {
+		
+		Foto foto = fotoService.findById(id);
+		fotoService.delete(foto);
+		
+		return "redirect:/";
+	}
+	
 	private String saveFoto(Model model,
 			@Valid @ModelAttribute Foto foto,
 			BindingResult bindingResult) {
 		
-		System.out.println("Pizza:\n" + foto);
+		System.out.println("Foto:\n" + foto);
 		System.out.println("\n---------------\n");
 		System.out.println("Error:\n" + bindingResult);
 		

@@ -33,8 +33,11 @@
 					  </div>
 					  <div class="mb-3">
 					    <label for="visibile" class="form-label text-white">Visibile</label>
-					    <input type="text" class="form-control mb-2" id="visibile" step="any" th:field="*{visibile}">
-					    <div id="visibile" class="form-text" th:replace="frags::errorDiv('visibile')"></div>
+					    <select th:field="*{visibile}" name="visibile" id="visibile" class="form-control" required>
+                            <option value="0">No</option>
+                            <option value="1">Si</option>
+                        </select>
+					    <div class="form-text" th:replace="frags::errorDiv('visibile')"></div>
 					  </div>
 					  <h4>Categorie</h4>
 						<div

@@ -25,11 +25,11 @@ public class CategoriaService {
 		categoriaRepository.save(categoria);
 	}
 	
-	private void delete(Categoria categoria) {
+	public void delete(Categoria categoria) {
 		categoriaRepository.delete(categoria);
 	}
 	
-	private void deleteById(int id) {
+	public void deleteById(int id) {
 		categoriaRepository.deleteById(id);
 	}
 }

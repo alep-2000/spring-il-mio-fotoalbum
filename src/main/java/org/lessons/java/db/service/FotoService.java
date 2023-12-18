@@ -25,6 +25,10 @@ public class FotoService {
 		return fotoRepository.findByTitoloContainingIgnoreCase(query);
 	}
 	
+	public List<Foto> findByVisibileTrue(){
+		return fotoRepository.findByVisibileTrue();
+	}
+	
 	public void save(Foto foto) {
 		fotoRepository.save(foto);
 	}
