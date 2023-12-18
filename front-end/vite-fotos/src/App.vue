@@ -5,45 +5,43 @@ import axios from 'axios';
 
 // IMPORT COMPONENTS
 import FotoIndex from './components/FotoIndex.vue';
-// import PizzaShow from './components/PizzaShow.vue';
-// import PizzaForm from './components/PizzaForm.vue';
+import FotoShow from './components/FotoShow.vue';
 
 // DATA
 const fotos = ref(null);
 const fotoActive = ref(null);
-// const creatingPizza = ref(false);
 
 // FUNCTIONS
-// const openPizza = (id) => {
-//   pizzas.value.forEach((pizza) => {
-//     if (pizza.id === id) {
-//       pizzaActive.value = pizza;
-//     }
-//   });
-// };
-// const closePizza = (update) => {
-//   pizzaActive.value = null;
-//   if (update) updatePizzas();
-// };
-// const pizzaCreated = () => {
-//   creatingPizza.value = false;
-//   updatePizzas();
-// };
+const openFoto = (id) => {
+  fotos.value.forEach((foto) => {
+    if (foto.id === id) {
+      fotoActive.value = foto;
+    }
+  });
+};
+const closeFoto = (update) => {
+  fotoActive.value = null;
+  if (update) updateFotos();
+};
+
 const updateFotos = async () => {
   const data = await axios.get("http://localhost:8080/api/f1.0/fotos");
   fotos.value = data.data;
 };
-// const deletePizza = () => {
-//   pizzaActive.value = null;
-//   updatePizzas();
-// };
 
 // HOOKS
 onMounted(updateFotos);
 </script>
 
 <template>
-  <fotos-index 
+  <foto-index 
+      v-if="fotoActive == null"
       :fotos="fotos" 
+      @open-foto="openFoto"
     />
+    <foto-show 
+        v-else
+        :foto="fotoActive"
+        @close-foto="closeFoto"
+      />
 </template>

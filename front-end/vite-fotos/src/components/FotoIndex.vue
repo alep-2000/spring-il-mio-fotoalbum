@@ -1,22 +1,10 @@
-<template>
-    <h1>Foto</h1>
-    <ul>
-        <li 
-            class="list-elem"
-            v-for="foto in fotos" 
-            :key="foto.id"
-        >
-            {{ foto.titolo }}
-        </li>
-    </ul>
-</template>
 
 <script setup>
 // IMPORT LIBS
-import { defineProps } from 'vue';  
+import { defineProps } from 'vue'; 
 
-// // EMITS
-// const emits = defineEmits(["openPizza"]);
+// EMITS
+const emits = defineEmits(["openFoto"]);
 
 // PROPS
 const props = defineProps({
@@ -26,6 +14,20 @@ const props = defineProps({
     }
 });
 </script>
+
+<template>
+    <h1>Foto</h1>
+    <ul>
+        <li 
+            class="list-elem"
+            v-for="foto in fotos" 
+            :key="foto.id"
+            @click="$emit('openFoto', foto.id)"
+        >
+            {{ foto.titolo }}
+        </li>
+    </ul>
+</template>
 
 <style scoped>
 
