@@ -17,12 +17,18 @@ public class AuthConf {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		http.cors().disable()
-			.csrf().disable()
-			.authorizeHttpRequests()
-	        .requestMatchers("/**").permitAll()
-	        .and().formLogin()
-	        .and().logout()
-	    ;
+		.csrf().disable()
+		.authorizeHttpRequests()
+		.requestMatchers("/fotos/create/**").hasAuthority("ADMIN")
+        .requestMatchers("/fotos/edit/**").hasAuthority("ADMIN")
+        .requestMatchers("/fotos/delete/**").hasAuthority("ADMIN")
+        .requestMatchers("/fotos/categorie/create/**").hasAuthority("ADMIN")
+        .requestMatchers("/fotos/categorie/delete/{id}/**").hasAuthority("ADMIN")
+        .requestMatchers("/api/f1.0/fotos/**").permitAll()
+        .requestMatchers("/**").hasAnyAuthority("USER", "ADMIN")
+        .and().formLogin()
+        .and().logout()
+    ;
 		
 		return http.build();
 	}
