@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -23,18 +22,9 @@ public class FotoRestController {
 	private FotoService fotoService;
 	
 	@GetMapping
-	public ResponseEntity<List<Foto>> getIndex(@RequestParam(required = false) String titolo){
+	public ResponseEntity<List<Foto>> getIndex(){
 		
-		List<Foto> fotos;
-		
-		if(titolo != null && !titolo.isEmpty()) {
-			fotos = fotoService.findByTitolo(titolo);
-			fotos = fotoService.findByVisibileTrue();
-		}else {
-			
-			fotos = fotoService.findAll();
-		}
-		
+		List<Foto> fotos = fotoService.findByVisibileTrue();
 		
 		return new ResponseEntity<>(fotos, HttpStatus.OK);
 	}

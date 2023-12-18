@@ -3,6 +3,9 @@
 // IMPORT LIBS
 import { defineProps } from 'vue'; 
 
+// IMPORT COMPONENTS
+import ContattoForm from './ContattoForm.vue';
+
 // EMITS
 const emits = defineEmits(["openFoto"]);
 
@@ -17,6 +20,7 @@ const props = defineProps({
 
 <template>
     <h1>Foto</h1>
+    <contatto-form/>
     <ul>
         <li 
             class="list-elem"

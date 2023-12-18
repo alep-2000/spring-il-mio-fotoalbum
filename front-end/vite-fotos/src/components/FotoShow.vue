@@ -1,5 +1,5 @@
 <template lang="">
-    <div v-if="!fotoUpdate">
+    <div v-if="!fotoUpdate"  >
         <h1>
             Foto: {{ myFoto.titolo }}
             <span 
@@ -8,7 +8,7 @@
                 X
             </span>
         </h1>
-        <!-- <p>Visibilità: {{ myFoto.visibile }}</p> -->
+        <p>Visibilità: {{ myFoto.visibile }}</p>
         <span>{{ myFoto.descrizione }}</span>
         <br>
         <br>

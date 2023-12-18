@@ -34,6 +34,11 @@
 							<button class="btn btn-success mb-3 me-2">
 								Crea Nuova Foto
 							</button>									
+						</a>
+						<a href="/contatti">
+							<button class="btn btn-success mb-3 me-2">
+								Lista contatti
+							</button>
 						</a>																					
 					</div>
 				</div>
@@ -42,7 +47,8 @@
 				<div 	
 					th:each="foto : ${fotos}"
 					th:object="${foto}"
-					class="card m-3 col-12 col-md-4 col-lg-3" style="width: 18rem;">
+					class="card m-3 col-12 col-md-4 col-lg-3" style="width: 18rem;"
+				>
 					<img th:src="*{url}" class="card-img-top" alt="..." style="height: 14rem; max-width: 18rem;">
 					<div class="card-body text-center">
 					  	<a
