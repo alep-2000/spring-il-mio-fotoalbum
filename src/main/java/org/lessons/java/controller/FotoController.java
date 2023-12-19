@@ -7,6 +7,7 @@ import java.util.List;
 import org.lessons.java.db.pojo.Categoria;
 import org.lessons.java.db.pojo.Contatto;
 import org.lessons.java.db.pojo.Foto;
+import org.lessons.java.db.repo.FotoRepository;
 import org.lessons.java.db.service.CategoriaService;
 import org.lessons.java.db.service.ContattoService;
 import org.lessons.java.db.service.FotoService;
@@ -47,6 +48,15 @@ public class FotoController {
 		
 		return "fotos";
 	}
+	
+	 @GetMapping("/api/fotos/filter")
+	    public List<Foto> getFilteredFotos(@RequestParam(required = false) String filter) {
+	        if (filter != null && !filter.isEmpty()) {
+	            return fotoService.findByTitolo(filter);
+	        } else {
+	            return fotoService.findAll();
+	        }
+	    }
 	
 	@GetMapping("/fotos/{id}")
 	public String getFoto(Model model,

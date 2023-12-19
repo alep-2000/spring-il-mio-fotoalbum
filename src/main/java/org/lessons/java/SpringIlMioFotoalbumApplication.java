@@ -54,17 +54,14 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 		fotoService.save(new Foto("Foto Viaggio", "Bella foto del viaggio", "https://picsum.photos/200", true, cat3));
 		fotoService.save(new Foto("Foto Naturalistica", "Bella foto del bosco", "https://picsum.photos/200", true, cat1));
 		
-		Role roleUser = new Role("USER");
+	
 		Role roleAdmin = new Role("ADMIN");
-		roleService.save(roleUser);
 		roleService.save(roleAdmin);
 		
 		String pws = AuthConf.passwordEncoder().encode("pws");
 		
-		User DioUser = new User("DioUser", pws, roleUser);
 		User GiuseppeAdmin = new User("GiuseppeAdmin", pws, roleAdmin);
 		
-		userService.save(DioUser);
 		userService.save(GiuseppeAdmin);
 	}
 }
