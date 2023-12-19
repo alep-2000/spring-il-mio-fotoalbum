@@ -1,9 +1,11 @@
 package org.lessons.java.db.pojo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 
 @Entity
 public class Contatto {
@@ -12,7 +14,11 @@ public class Contatto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
+    
+    @Email
     private String email;
+    
+    @Column(columnDefinition = "TEXT")
     private String messaggio;
     
     public Contatto() {}

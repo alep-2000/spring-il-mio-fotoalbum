@@ -13,7 +13,7 @@ const contatto = ref({
 // FUNCTIONS
 const sendMessage = async () => {
     try {
-    const response = await axios.post('http://localhost:8080/contatti', { contatto: contatto.value });
+    const response = await axios.post('http://localhost:8080/api/contatti', contatto.value );
     console.log(response);
   } catch (error) {
 

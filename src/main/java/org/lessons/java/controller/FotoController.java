@@ -5,8 +5,10 @@ package org.lessons.java.controller;
 import java.util.List;
 
 import org.lessons.java.db.pojo.Categoria;
+import org.lessons.java.db.pojo.Contatto;
 import org.lessons.java.db.pojo.Foto;
 import org.lessons.java.db.service.CategoriaService;
+import org.lessons.java.db.service.ContattoService;
 import org.lessons.java.db.service.FotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,14 +31,19 @@ public class FotoController {
 	@Autowired 
 	private CategoriaService categoriaService;
 	
+	@Autowired
+	private ContattoService contattoService;
+	
 	@GetMapping
 	public String getFotos(Model model, 
 						@RequestParam(required = false) String f) {
 		List<Foto> fotos = f == null
 					? fotoService.findAll()
 					: fotoService.findByTitolo(f);
+		List<Contatto> contatti = contattoService.findAll();
 		model.addAttribute("fotos", fotos);
 		model.addAttribute("f", f == null ? "" : f);
+		model.addAttribute("contatti", contatti);
 		
 		return "fotos";
 	}

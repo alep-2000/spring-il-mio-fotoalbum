@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -26,16 +27,22 @@ public class ContattoController {
 		return "/contatti";
 	}
 	
-	@PostMapping("/back-home")
-	public String updateConatti(Model model) {
-	    List<Contatto> contatti = contattoService.findAll();
-	    
-	    for (Contatto contatto : contatti) {
-	       
-	        contattoService.save(contatto);
-	    }
-
-	    
-	    return "redirect:/";
+	@GetMapping("/contatti/{id}")
+	public String getContatti(Model model,
+			@PathVariable int id) {
+		
+		Contatto contatto = contattoService.findById(id);
+		model.addAttribute("contatto", contatto);
+		
+		return "contatto";
+	}
+	
+	@PostMapping("/contatti/delete/{id}")
+	public String deleteContatto(@PathVariable int id) {
+		
+		Contatto contatto = contattoService.findById(id);
+		contattoService.delete(contatto);
+		
+		return "redirect:/";
 	}
 }

@@ -29,10 +29,12 @@
 									<td th:text="${contatto.email}"></td>
 									<td th:text="${contatto.nome}"></td>
 									<td>
-										<a th:href="@{/contatto/{id} ((id=*{id})}" class="btn btn-info">
-											Modifica
-										</a>
-										<form style="display:inline-block" th:action="@{/contatti/delete/{id} ((id=*{id})}" method="POST">
+										<a th:href="@{/contatti/{contattiId} (contattiId=${contatto.id})}">
+											<button type="submit" class="btn btn-success">
+				                    			Vedi dettaglio
+				                    		</button>
+				                        </a>
+										<form style="display:inline-block" th:action="@{/contatti/delete/{contattiId} (contattiId=${contatto.id})}" method="POST">
 											<button type="submit" class="btn btn-danger">
 												Elimina
 											</button>

@@ -24,21 +24,13 @@ public class AuthConf {
 	@Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
-		http.cors().disable()
-		.csrf().disable()
-		.authorizeHttpRequests()
-		.requestMatchers("/api/contatti/**").permitAll()
-		.requestMatchers("/fotos/{id}/**").hasAuthority("ADMIN")
-		.requestMatchers("/fotos/create/**").hasAuthority("ADMIN")
-        .requestMatchers("/fotos/edit/**").hasAuthority("ADMIN")
-        .requestMatchers("/fotos/delete/**").hasAuthority("ADMIN")
-        .requestMatchers("/fotos/categorie/create/**").hasAuthority("ADMIN")
-        .requestMatchers("/fotos/categorie/delete/{id}/**").hasAuthority("ADMIN")
-        .requestMatchers("/api/f1.0/fotos/**").permitAll()
-        .requestMatchers("/**").hasAnyAuthority("USER", "ADMIN")
-        .and().formLogin()
-        .and().logout()
-    ;
+		http.csrf().disable()
+        .authorizeHttpRequests()
+            .requestMatchers("/api/**").permitAll()
+            .requestMatchers("/**").hasAuthority("ADMIN")
+            .and().formLogin()
+            .and().logout()
+        ;
 		
 		return http.build();
 	}
